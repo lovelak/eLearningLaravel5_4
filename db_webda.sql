@@ -149,7 +149,7 @@ INSERT INTO `pretests` (`id`, `question`, `choice1`, `choice2`, `choice3`, `choi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `units`
+-- Table structure for table `unit`
 --
 
 CREATE TABLE `units` (
@@ -225,7 +225,7 @@ ALTER TABLE `pretests`
   ADD KEY `pretests_user_id_foreign` (`user_id`);
 
 --
--- Indexes for table `units`
+-- Indexes for table `unit`
 --
 ALTER TABLE `units`
   ADD PRIMARY KEY (`id`);
@@ -267,7 +267,7 @@ ALTER TABLE `posttests`
 ALTER TABLE `pretests`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `units`
+-- AUTO_INCREMENT for table `unit`
 --
 ALTER TABLE `units`
   MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;

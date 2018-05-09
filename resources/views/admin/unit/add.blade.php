@@ -9,50 +9,32 @@
                 <li class="breadcrumb-item">
                     <a href="{{ url('admin/menu') }}">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Posttests แบบทดสอบหลังเรียน</li>
+                <li class="breadcrumb-item active">{{ $unit->name .' '.$unit->title }}</li>
             </ol>
             <!-- Example DataTables Card-->
             <div class="card mb-12">
                 <div class="card-header">
                     <i class="fa fa-plus"></i> <a href=""></a></div>
                 <div class="card-body">
-                    <form action = "{{ url('admin/posttests/') }}" method = "post" enctype ="multipart/form-data">
+                    <form action = "{{ url('admin/learnings/') }}" method = "post" enctype ="multipart/form-data">
                         {{ csrf_field() }}
+                        <input type="hidden" class="form-control" name = "unit_id" value="{{ $unit->id }}" >
 
                         <div class="form-group">
-                            <label for="exampleInputPassword1">คำถาม</label>
-                            <textarea class="form-control my-editor" rows="5" name = "question" id = "question"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 1</label>
-                            <input type="text" class="form-control" name = "choice1" value="">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="text" class="form-control" name = "name" value="" >
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 2</label>
-                            <input type="text" class="form-control" name = "choice2" value="">
+                            <label for="exampleInputEmail1">Slug</label>
+                            <input type="text" class="form-control" name = "slug" value="" >
                         </div>
-
                         <div class="form-group">
-                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 3</label>
-                            <input type="text" class="form-control" name = "choice3" value="">
+                            <label for="exampleInputPassword1">Detail</label>
+                            <textarea class="form-control my-editor" rows="5" name = "description" id = "description"></textarea>
                         </div>
-
                         <div class="form-group">
-                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 4</label>
-                            <input type="text" class="form-control" name = "choice4" value="">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">เลือกคำตอบ</label>
-
-                            <select name = "answer" class="form-control" style="width: 100px" required>
-                                <option value="0">เลือกคำตอบ</option>
-                                <option value="1">ข้อ 1</option>
-                                <option value="2">ข้อ 2</option>
-                                <option value="3">ข้อ 3</option>
-                                <option value="4">ข้อ 4</option>
-                            </select>
+                            <label for="exampleInputEmail1">Vdo</label>
+                            <input type="text" class="form-control" name = "vdo_youtube" value="" >
                         </div>
 
 

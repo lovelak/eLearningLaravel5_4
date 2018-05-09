@@ -20,8 +20,10 @@ class CreateLearningsTable extends Migration
             $table->string('slug');
             $table->text('description')->nullable();
 
+            $table->string('vdo_youtube')->nullable();
+
             $table->integer('unit_id')->unsigned();
-            $table->foreign('unit_id')->references('id')->on('units');
+            $table->foreign('unit_id')->references('id')->on('unit');
 
             $table->timestamps();
         });

@@ -50,31 +50,12 @@
 
                 </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                <a class="nav-link" href="{{ url('admin/units') }}">
                     <i class="fa fa-fw fa-wrench"></i>
                     <span class="nav-link-text">จัดการหน่วยการเรียนรู้</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="navbar.html">หน่วยการเรียนรู้ที่ 1</a>
-                    </li>
-                    <li>
-                        <a href="cards.html">หน่วยการเรียนรู้ที่ 2</a>
-                    </li>
-                    <li>
-                        <a href="cards.html">หน่วยการเรียนรู้ที่ 3</a>
-                    </li>
-                    <li>
-                        <a href="cards.html">หน่วยการเรียนรู้ที่ 4</a>
-                    </li>
-                    <li>
-                        <a href="cards.html">หน่วยการเรียนรู้ที่ 5</a>
-                    </li>
-                    <li>
-                        <a href="cards.html">หน่วยการเรียนรู้ที่ 6</a>
-                    </li>
-                </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="charts.html">

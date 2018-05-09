@@ -9,38 +9,38 @@
                 <li class="breadcrumb-item">
                     <a href="{{ url('admin/menu') }}">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">Pretests แบบทดสอบก่อนเรียน</li>
+                <li class="breadcrumb-item active">Posttests แบบทดสอบหลังเรียน</li>
             </ol>
             <!-- Example DataTables Card-->
             <div class="card mb-12">
                 <div class="card-header">
                     <i class="fa fa-plus"></i> <a href=""></a></div>
                 <div class="card-body">
-                    <form action = "{{ url('admin/pretests/'.$pretests->id) }}" method = "post" enctype ="multipart/form-data">
+                    <form action = "{{ url('admin/posttests/'.$posttests->id) }}" method = "post" enctype ="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <div class="form-group">
                             <label for="exampleInputPassword1">คำถาม</label>
-                            <textarea class="form-control my-editor" rows="5" name = "question" id = "question">{{ $pretests->question }}</textarea>
+                            <textarea class="form-control my-editor" rows="5" name = "question" id = "question">{{ $posttests->question }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">ตัวเลือก ข้อ 1</label>
-                            <input type="text" class="form-control" name = "choice1" value="{{ $pretests->choice1 }}" >
+                            <input type="text" class="form-control" name = "choice1" value="{{ $posttests->choice1 }}" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">ตัวเลือก ข้อ 2</label>
-                            <input type="text" class="form-control" name = "choice2" value="{{ $pretests->choice2 }}">
+                            <input type="text" class="form-control" name = "choice2" value="{{ $posttests->choice2 }}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">ตัวเลือก ข้อ 3</label>
-                            <input type="text" class="form-control" name = "choice3" value="{{ $pretests->choice3 }}">
+                            <input type="text" class="form-control" name = "choice3" value="{{ $posttests->choice3 }}">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">ตัวเลือก ข้อ 4</label>
-                            <input type="text" class="form-control" name = "choice4" value="{{ $pretests->choice4 }}">
+                            <input type="text" class="form-control" name = "choice4" value="{{ $posttests->choice4 }}">
                         </div>
 
                         <div class="form-group">
@@ -49,17 +49,17 @@
                             <select name = "answer" class="form-control" style="width: 100px" required>
                                 <option value="0">เลือกคำตอบ</option>
                                 <option value="1"
-                                        @if($pretests->answer == '1')
+                                        @if($posttests->answer == '1')
                                         selected
                                         @endif>
                                     ข้อ 1</option>
-                                <option value="2"  @if($pretests->answer == '2')
+                                <option value="2"  @if($posttests->answer == '2')
                                 selected
                                         @endif>ข้อ 2</option>
-                                <option value="3"  @if($pretests->answer == '3')
+                                <option value="3"  @if($posttests->answer == '3')
                                 selected
                                         @endif>ข้อ 3</option>
-                                <option value="4"  @if($pretests->answer == '4')
+                                <option value="4"  @if($posttests->answer == '4')
                                 selected
                                         @endif>ข้อ 4</option>
 

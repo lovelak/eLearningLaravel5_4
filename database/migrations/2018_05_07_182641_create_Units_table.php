@@ -14,7 +14,7 @@ class CreateUnitsTable extends Migration
     public function up()
     {
         //ประเภทหน่วยการเรียนรุ้
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('unit', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateUnitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('unit');
     }
 }

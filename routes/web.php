@@ -44,4 +44,13 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     //Posttest
     Route::resource('posttests','PosttestsController');
 
+    //Unit
+    Route::resource('units','UnitsController');
+    Route::get('units/{id}/add','UnitsController@add');
+
+    //Learning
+    Route::resource('learnings','LearningsController');
+
+
+
 });

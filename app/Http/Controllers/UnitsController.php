@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Posttest;
-use Session;
-class PosttestsController extends Controller
+use App\Unit;
+class UnitsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,11 @@ class PosttestsController extends Controller
      */
     public function index()
     {
-        $posttests = Posttest::orderByRaw("RAND()")->get();
-        return view('admin.posttest.index',compact('posttests'));
+        $units = Unit::orderBy('id')->get();
+
+
+
+        return view('admin.unit.index',compact('units'));
     }
 
     /**
@@ -25,7 +27,15 @@ class PosttestsController extends Controller
      */
     public function create()
     {
-        return view('admin.posttest.create');
+        //
+    }
+
+
+    //add
+    public function add($id){
+
+        $unit = Unit::where('id',$id)->first();
+        return view('admin.unit.add',compact('unit'));
     }
 
     /**
@@ -36,10 +46,7 @@ class PosttestsController extends Controller
      */
     public function store(Request $request)
     {
-        Posttest::create($request->all());
-
-        Session::flash('success','เพิ่มข้อสอบเรียบร้อยแล้ว');
-        return redirect()->route('posttests.index');
+        //
     }
 
     /**
@@ -50,7 +57,7 @@ class PosttestsController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -61,8 +68,7 @@ class PosttestsController extends Controller
      */
     public function edit($id)
     {
-        $posttests = Posttest::findOrFail($id);
-        return view('admin.posttest.edit',compact('posttests'));
+        //
     }
 
     /**
@@ -74,11 +80,7 @@ class PosttestsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $posttests = Posttest::findOrFail($id);
-        $posttests->update($request->all());
-
-        Session::flash('success','แก้ไขข้อสอบเรียบร้อยแล้ว');
-        return redirect()->route('posttests.index');
+        //
     }
 
     /**

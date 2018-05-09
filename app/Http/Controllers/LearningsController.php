@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Posttest;
+use App\Learning;
+
 use Session;
-class PosttestsController extends Controller
+class LearningsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,7 @@ class PosttestsController extends Controller
      */
     public function index()
     {
-        $posttests = Posttest::orderByRaw("RAND()")->get();
-        return view('admin.posttest.index',compact('posttests'));
+        //
     }
 
     /**
@@ -25,7 +25,7 @@ class PosttestsController extends Controller
      */
     public function create()
     {
-        return view('admin.posttest.create');
+        //
     }
 
     /**
@@ -36,10 +36,12 @@ class PosttestsController extends Controller
      */
     public function store(Request $request)
     {
-        Posttest::create($request->all());
 
-        Session::flash('success','เพิ่มข้อสอบเรียบร้อยแล้ว');
-        return redirect()->route('posttests.index');
+        Learning::create($request->all());
+
+
+        Session::flash('success','เพิ่มหัวข้อย่อยเรียบร้อยแล้ว');
+        return redirect()->route('units.index');
     }
 
     /**
@@ -61,8 +63,7 @@ class PosttestsController extends Controller
      */
     public function edit($id)
     {
-        $posttests = Posttest::findOrFail($id);
-        return view('admin.posttest.edit',compact('posttests'));
+        //
     }
 
     /**
@@ -74,11 +75,7 @@ class PosttestsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $posttests = Posttest::findOrFail($id);
-        $posttests->update($request->all());
-
-        Session::flash('success','แก้ไขข้อสอบเรียบร้อยแล้ว');
-        return redirect()->route('posttests.index');
+        //
     }
 
     /**
