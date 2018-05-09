@@ -19,6 +19,8 @@ Route::group(['prefix'=>'pages','middleware'=>'auth'],function() {
 
     //แบบทดสอบก่อนเรียน
     Route::get('/pretests', 'PagesController@pretests');
+    //ตรวจคำตอบ
+    Route::post('/answerPretests','PagesController@answerPretests');
 
     //แบบทดสอบหลังเรียน
     Route::get('posttests','PagesController@posttests');
