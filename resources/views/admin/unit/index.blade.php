@@ -44,15 +44,20 @@
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                                     {{ $l->name }}
 
-                                                    <span class="badge badge-pill"><a href = "">แก้ไข</a> | <a href = "">ลบ</a></span>
+                                                    <span class="badge badge-pill"><a href = "{{ url('admin/learnings/'.$l->id.'/edit') }}">แก้ไข</a> | <a href = "">ลบ</a></span>
                                                 </li>
                                             @endforeach
                                         </ul>
 
                                     </td>
 
-                                    <td><a href="{{ url('admin/pretests/'.$unit->id.'/edit') }}"><span
-                                                    class="fi-arrow-thick-bottom"></span> แก้ไข</a></td>
+                                    <td>
+                                         <a href="{{ url('admin/tests/show/'.$unit->id) }}"><i class="fa fa-plus"></i> ข้อสอบประจำหน่วย</a> |
+                                        <a href="{{ url('admin/units/'.$unit->id.'/edit') }}"><i class="fa fa-edit"></i> แก้ไข</a> |
+                                        <a href="{{ url('admin/units/'.$unit->id.'/destroy') }}"><i class="fa fa-trash"></i> ลบ</a>
+
+
+                                    </td>
 
                                 </tr>
                             @endforeach

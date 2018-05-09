@@ -82,6 +82,11 @@
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+                <a class="nav-link" href="{{ url('/') }}" target="_blank">
+                    <i class="fa fa-fw fa-eye"></i>หน้าเว็บไซต์</a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link">
                     <i class="fa fa-fw fa-user"></i>{{ Auth::user()->name }}</a>
             </li>

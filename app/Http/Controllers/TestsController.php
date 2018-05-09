@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Learning;
 use App\Unit;
+use Illuminate\Http\Request;
+use App\Tests;
 use Session;
-class LearningsController extends Controller
+
+class TestsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,7 @@ class LearningsController extends Controller
      */
     public function index()
     {
-        //
+        return "index";
     }
 
     /**
@@ -23,10 +24,19 @@ class LearningsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add($id)
     {
-        //
+
+        $unit_id = $id;
+        $unit = Unit::whereRaw('id = ?',[$id])->first();
+
+        return view('admin.test.add',compact('unit_id','unit'));
     }
+
+    public function create(){
+
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,12 +46,10 @@ class LearningsController extends Controller
      */
     public function store(Request $request)
     {
+        Tests::create($request->all());
 
-        Learning::create($request->all());
-
-
-        Session::flash('success','เพิ่มหัวข้อย่อยเรียบร้อยแล้ว');
-        return redirect()->route('units.index');
+        Session::flash('success','เพิ่มข้อสอบเรียบร้อยแล้ว');
+        return redirect('admin/tests/show/'.$request->unit_id);
     }
 
     /**
@@ -52,7 +60,13 @@ class LearningsController extends Controller
      */
     public function show($id)
     {
-        //
+
+            $unit_id = $id ;
+            $tests = Tests::whereRaw('unit_id = ?',[$id])->get();
+
+            $unit = Unit::whereRaw('id = ?',[$id])->first();
+
+            return view('admin.test.show',compact('tests','unit_id','unit'));
     }
 
     /**
@@ -63,14 +77,11 @@ class LearningsController extends Controller
      */
     public function edit($id)
     {
+        $test = Tests::findOrFail($id);
 
+       // $unit = Unit::whereRaw('id = ?',[$id])->first();
 
-        $learning = Learning::findOrFail($id);
-
-        $unit = Unit::where('id',$learning->unit_id)->first();
-
-
-        return view('admin.learning.edit',compact('unit','learning'));
+        return view('admin.test.edit',compact('test','unit'));
     }
 
     /**
@@ -82,12 +93,7 @@ class LearningsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $learning = Learning::findOrFail($id);
-        $learning->update($request->all());
-
-        Session::flash('success','แก้ไขรายการเรียบร้อยแล้ว');
-        return redirect()->route('units.index');
+        //
     }
 
     /**
@@ -98,6 +104,11 @@ class LearningsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $test = Tests::findOrFail($id);
+
+        $test->delete();
+
+        Session::flash('success','ลบรายการนี้เรียบร้อยแล้ว');
+        return redirect()->back();
     }
 }

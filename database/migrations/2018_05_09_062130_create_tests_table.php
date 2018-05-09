@@ -24,8 +24,11 @@ class CreateTestsTable extends Migration
             $table->char('answer')->nullable();
 
 
-            $table->integer('learning_id')->unsigned();
-            $table->foreign('learning_id')->references('id')->on('learnings');
+            $table->integer('unit_id')->unsigned();
+            $table->foreign('unit_id')->references('id')->on('units');
+
+            $table->integer('unit_id')->unsigned();
+            $table->foreign('unit_id')->references('id')->on('units');
 
             $table->timestamps();
         });

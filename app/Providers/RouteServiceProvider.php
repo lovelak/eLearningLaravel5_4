@@ -32,6 +32,9 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
         Schema::defaultStringLength(191);
         View::share('units', Unit::orderBy('id')->get()); //Unit
+
+
+
     }
 
     /**

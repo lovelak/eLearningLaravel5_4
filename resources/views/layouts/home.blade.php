@@ -59,7 +59,7 @@
                 <li><a href="">แนะนำบทเรียน</a></li>
                 <li><a href="">ความรู้เพิ่มเติม</a></li>
                   <li><a href="">ผู้จัดทำ</a></li>
-                  <li><a href="">ผลงานนักเรียน</a></li>
+                  <li><a href="">ดาวน์โหลดคู่มือ</a></li>
                   <li><a href="">บรรณานุกรม</a></li>
               </ul><!-- .navbar-nav -->
             </div><!-- .navbar-collapse -->
@@ -90,67 +90,21 @@
 
               <section class="widget widget_archive">
                 <h2 class="widget-title"><a href = "" class="btn btn-success btn-lg btn-block">แบบทดสอบก่อนเรียน</a></h2>
-                <h2 class="widget-title">หน่วยที่ 1 แนะนำ Desktop Author</h2>
-                <ul>
-                  <li><a href="">จุดประสงค์การเรียนรู้</a></li>
-                  <li><a href="">ความรู้เบื้องต้นเกี่ยวกับ Desktop Author</a></li>
-                  <li><a href="">วิธีการเข้าสู่โปรแกรม</a></li>
-                  <li><a href="">ส่วนประกอบของโปรแกรม</a></li>
-                  <li><a href="">ส่วนประกอบของโปรแกรม</a></li>
 
-                    <li><a href="">แบบทดสอบท้ายบทเรียน</a></li>
+                @foreach($units as $unit)
+                    <h2 class="widget-title">{{ $unit->name .' '.$unit->title }}</h2>
 
-                </ul>
+                    <ul>
+                      <?php $learnings = DB::table('learnings')->whereRaw('unit_id = ?',[$unit->id])->orderBy('id')->get(); ?>
 
+                      @foreach($learnings as $learning)
+                        <li><a href="">{{ $learning->name }}</a></li>
+                      @endforeach
+                        <li><a href="{{ $unit->id }}">แบบทดสอบท้ายบทเรียน</a></li>
+                    </ul>
 
-                  <h2 class="widget-title">หน่วยที่ 2 เริ่มสร้างหนังสืออิเล็กทรอนิกส์</h2>
-                  <ul>
-                      <li><a href="">จุดประสงค์การเรียนรู้</a></li>
-                      <li><a href="">การกำหนดคุณสมบัติเบื้องต้น</a></li>
-                      <li><a href="">การแบ่งหน้ากระดาษ</a></li>
-                      <li><a href="">การแทรกภาพปกหน้าและกำหนดให้โปร่งใส</a></li>
-                      <li><a href="">การเพิ่มหน้ากระดาษ</a></li>
-                      <li><a href="">การใส่สีให้หน้ากระดาษ</a></li>
-                      <li><a href="">แบบทดสอบท้ายบทเรียน</a></li>
+                @endforeach
 
-
-                  </ul>
-                  <h2 class="widget-title">หน่วยที่ 3 ข้อความและ Multimedia</h2>
-                  <ul>
-                      <li><a href="">จุดประสงค์การเรียนรู้</a></li>
-                      <li><a href="">การพิมพ์ข้อความลงในหนังสือ</a></li>
-                      <li><a href="">การทำภาพ Popup</a></li>
-                      <li><a href="">การแทรกไฟล์ MP3</a></li>
-                      <li><a href="">การแทรกไฟล์ Animation และวิดีโอ</a></li>
-                      <li><a href="">แบบทดสอบท้ายบทเรียน</a></li>
-
-                  </ul>
-                  <h2 class="widget-title">หน่วยที่ 4 ปุ่ม Buttons และการเชื่อมโยง</h2>
-                  <ul>
-                      <li><a href="">จุดประสงค์การเรียนรู้</a></li>
-                      <li><a href="">การแทรกปุ่ม Buttons และการเชื่อมโยง</a></li>
-                      <li><a href="">การทำสารบัญ และการเชื่อมโยง</a></li>
-                      <li><a href="">การกำหนดปกหลังให้มีคุณภาพโปร่งใส</a></li>
-                      <li><a href="">แบบทดสอบท้ายบทเรียน</a></li>
-
-                  </ul>
-
-                  <h2 class="widget-title">หน่วยที่ 5 การสร้างแบบทดสอบ</h2>
-                  <ul>
-                      <li><a href="">จุดประสงค์การเรียนรู้</a></li>
-                      <li><a href="">การสร้างคำถามและคำตอบ</a></li>
-                      <li><a href="">การสร้างปุ่มสำหรับการส่งแบบทดสอบ</a></li>
-                      <li><a href="">แบบทดสอบท้ายบทเรียน</a></li>
-
-                  </ul>
-
-                  <h2 class="widget-title">หน่วยที่ 6 การบีบอัดไฟล์เพื่อเผยแพร่ผลงาน</h2>
-                  <ul>
-                      <li><a href="">จุดประสงค์การเรียนรู้</a></li>
-                      <li><a href="">การบีบอัดไฟล์งานด้วยคำสั่ง Package</a></li>
-                      <li><a href="">แบบทดสอบท้ายบทเรียน</a></li>
-
-                  </ul>
                 <h2 class="widget-title"><a href = "" class="btn btn-success btn-lg btn-block">แบบทดสอบหลังเรียน</a></h2>
                 <h2 class="widget-title"></h2>
               </section><!-- .widget_archive -->
@@ -166,7 +120,7 @@
           <div class="row">
 
             <div class="col-md-12">
-              <h4>นางสาวสุภัชรา  อวบอ้วน ครู ชำนาญการ</h4>
+              <h4>นางสุภัชรา   โตแย้มบุญฤทธิ์ ครูชำนาญการ</h4>
               <h4>บทเรียนออนไลน์ เรื่อง การสร้างหนังสืออิเล็กทรอนิกส์ด้วยโปรแกรม Desktop Author</h4>
                 <p>ระดับชั้นมัธยมศึกษาปีที่ 1 โรงเรียนบ้านหนองบอนหัวหนองเหล่ายาว</p>
 

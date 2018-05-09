@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Unit;
+
+use App\Learning;
 class UnitsController extends Controller
 {
     /**
@@ -68,7 +70,8 @@ class UnitsController extends Controller
      */
     public function edit($id)
     {
-        //
+
+
     }
 
     /**

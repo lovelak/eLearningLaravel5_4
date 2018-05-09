@@ -5,12 +5,14 @@
 <div class="row">
 
     <div class="col-md-12">
-
+        <h2 style="border-bottom: solid 4px;color: #0b2e13;">ประกาศ...</h2>
 
         <img src = "{{ asset('boxed/img/b.jpg') }}">
 
 
+        <hr/>
+        <h2>รายชื่อนักเรียนที่สอบล่าสุด</h2>
 
-    </div><!-- .col-md-6 -->
-</div><!-- .row -->
+    </div>
+</div>
 @endsection

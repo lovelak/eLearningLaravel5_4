@@ -52,5 +52,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::resource('learnings','LearningsController');
 
 
+    //Tests
+    Route::resource('tests','TestsController');
+    Route::get('tests/show/{id}','TestsController@show');
+    Route::get('tests/add/{id}','TestsController@add');
+    Route::get('tests/destroy/{id}','TestsController@destroy');
+
+
 
 });

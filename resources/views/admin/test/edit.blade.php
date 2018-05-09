@@ -9,33 +9,63 @@
                 <li class="breadcrumb-item">
                     <a href="{{ url('admin/units') }}">Dashboard</a>
                 </li>
-                <li class="breadcrumb-item active">{{ $units->name .' '.$units->title }}</li>
+                <li class="breadcrumb-item active">แบบทดสอบประจำหน่วยการเรียนรู้</li>
             </ol>
             <!-- Example DataTables Card-->
             <div class="card mb-12">
                 <div class="card-header">
                     <i class="fa fa-plus"></i> <a href=""></a></div>
                 <div class="card-body">
-                    <form action = "{{ url('admin/learnings/'.$units->id) }}" method = "post" enctype ="multipart/form-data">
+                    <form action = "{{ url('admin/tests/'.$test->id) }}" method = "post" enctype ="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
-                        <input type="hidden" class="form-control" name = "unit_id" value="{{ $units->unit_id }}" >
+                        <input type="hidden" class="form-control" name = "unit_id" value="{{ $test->unit_id }}">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">คำถาม</label>
+                            <textarea class="form-control my-editor" rows="5" name = "question" id = "question">{{ $test->question }}</textarea>
+                        </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" name = "name" value="" >
+                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 1</label>
+                            <input type="text" class="form-control" name = "choice1" value="{{ $test->choice1 }}">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Slug</label>
-                            <input type="text" class="form-control" name = "slug" value="" >
+                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 2</label>
+                            <input type="text" class="form-control" name = "choice2" value="{{ $test->choice2 }}">
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Detail</label>
-                            <textarea class="form-control my-editor" rows="5" name = "description" id = "description"></textarea>
+                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 3</label>
+                            <input type="text" class="form-control" name = "choice3" value="{{ $test->choice3 }}">
                         </div>
+
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Vdo</label>
-                            <input type="text" class="form-control" name = "vdo_youtube" value="" >
+                            <label for="exampleInputEmail1">ตัวเลือก ข้อ 4</label>
+                            <input type="text" class="form-control" name = "choice4" value="{{ $test->choice4 }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">เลือกคำตอบ</label>
+
+                            <select name = "answer" class="form-control" style="width: 100px" required>
+                                <option value="0">เลือกคำตอบ</option>
+                                <option value="1"
+                                        @if($test->answer == '1')
+                                        selected
+                                        @endif>
+                                    ข้อ 1</option>
+                                <option value="2"  @if($test->answer == '2')
+                                selected
+                                        @endif>ข้อ 2</option>
+                                <option value="3"  @if($test->answer == '3')
+                                selected
+                                        @endif>ข้อ 3</option>
+                                <option value="4"  @if($test->answer == '4')
+                                selected
+                                        @endif>ข้อ 4</option>
+
+
+                            </select>
                         </div>
 
 
