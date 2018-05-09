@@ -60,7 +60,7 @@
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="charts.html">
                     <i class="fa fa-fw fa-user"></i>
-                    <span class="nav-link-text">ผู้ใช้งานระบบ</span>
+                    <span class="nav-link-text">จัดการผู้สอบ</span>
                 </a>
             </li>
 

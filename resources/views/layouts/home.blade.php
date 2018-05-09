@@ -89,7 +89,7 @@
             <div class="col-md-4 col-md-pull-8">
 
               <section class="widget widget_archive">
-                <h2 class="widget-title"><a href = "" class="btn btn-success btn-lg btn-block">แบบทดสอบก่อนเรียน</a></h2>
+                <h2 class="widget-title"><a href = "{{ url('pages/pretests') }}" class="btn btn-success btn-lg btn-block">แบบทดสอบก่อนเรียน</a></h2>
 
                 @foreach($units as $unit)
                     <h2 class="widget-title">{{ $unit->name .' '.$unit->title }}</h2>
@@ -105,8 +105,9 @@
 
                 @endforeach
 
-                <h2 class="widget-title"><a href = "" class="btn btn-success btn-lg btn-block">แบบทดสอบหลังเรียน</a></h2>
+                <h2 class="widget-title"><a href = "{{ url('pages/posttests') }}" class="btn btn-success btn-lg btn-block">แบบทดสอบหลังเรียน</a></h2>
                 <h2 class="widget-title"></h2>
+
               </section><!-- .widget_archive -->
 
 

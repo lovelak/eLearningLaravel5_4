@@ -15,8 +15,15 @@ Route::get('/', function () {
     return view('home.index');
 });
 
+Route::group(['prefix'=>'pages','middleware'=>'auth'],function() {
 
+    //แบบทดสอบก่อนเรียน
+    Route::get('/pretests', 'PagesController@pretests');
 
+    //แบบทดสอบหลังเรียน
+    Route::get('posttests','PagesController@posttests');
+
+});
 
 
 Auth::routes();
@@ -61,3 +68,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
 
 });
+
+//Git Fetch
+//git merge // git pull
