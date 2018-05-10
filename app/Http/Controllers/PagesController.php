@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Pretest;
 use App\Posttest;
-
+use Auth;
 
 class PagesController extends Controller
 {
@@ -14,24 +14,20 @@ class PagesController extends Controller
     //แบบทดสอบก่่อนเรียน
     public function pretests(){
 
-        $pretests = Pretest::all();
+        $pretests = Pretest::orderByRaw("RAND()")->get();
         return view('home.pretest.index',compact('pretests'));
     }
 
     public function answerPretests(Request $request){
 
 
-        $score=0;
-        for($i=1;$i<=count($request->id);$i++)
-        {
+        $total = Pretest::all();
 
-          echo  $ch = $request->choice.$i;
-            if( $ch == คำตอบจากฐานข้อมูล)
-            {
-                $score = $score+1;
-            }
+        for($i = 1 ;$i <= count($total) ; $i++){
+
+            echo "choice".$i.": ".$request->choice[$i];
+
         }
-       echo "True $score<br>";
     }
 
     //แบบทดสอบหลังเรียน

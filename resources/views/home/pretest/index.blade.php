@@ -12,10 +12,8 @@
 
             <form  method="post" action="{{ url('pages/answerPretests') }}">
                 {{ csrf_field() }}
-                <?php $i = 0;  ;?>
+                <?php $i = 1;  ;?>
                 @foreach($pretests as $pretest)
-
-                    <?php $i++ ;?>
 
                     <div class ="thumbnail">
                         <table>
@@ -23,29 +21,23 @@
                                 <td>คำถามข้อที่ {{ $i }} )&nbsp; </td>
                                 <td>
                                     <h4> {!! $pretest->question !!}
-                                        <input name="id[<?=$i;?>]" type="hidden" value="{{ $pretest->id }}">
+
                                     </h4>
 
                                 </td>
                             </tr>
                         </table>
-
-                            <input name="choice{{ $i }}" type="radio" value="1">
-                            {!! $pretest->choice1 !!} <br/>
-
-                            <input type="radio" name="choice{{ $i }}" value="2">
-                            {!! $pretest->choice2 !!} <br/>
-
-                            <input type="radio" name="choice{{ $i }}" value="3">
-                            {!! $pretest->choice3 !!} <br/>
-
-                            <input type="radio" name="choice{{ $i }}" value="4">
-                            {!! $pretest->choice4 !!} <br/>
+                        <ul>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="1"> {!! $pretest->choice1 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="2"> {!! $pretest->choice2 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="3"> {!! $pretest->choice3 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="4"> {!! $pretest->choice4 !!} </li>
+                        </ul>
 
                     </div>
-
+                    <?php $i++ ;?>
                 @endforeach
-                <div align="center"><br>
+                <div class ="thumbnail">
                     <button type="submit" name="ok" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;ส่งคำตอบ
                     </button>
