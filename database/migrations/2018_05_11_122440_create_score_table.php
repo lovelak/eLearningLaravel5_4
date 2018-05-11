@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResultsTable extends Migration
+class CreateScoreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateResultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('results', function (Blueprint $table) {
+        Schema::create('score', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('choice')->nullable();
+            $table->string('question_name')->nullable();
+            $table->integer('total')->nullable();
+            $table->string('status')->nullable();
 
-            $table->integer('pretest_id')->unsigned()->nullable();
-            $table->foreign('pretest_id')->references('id')->on('pretests');
-            
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('user_id')->nullable()->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-
-
 
             $table->timestamps();
         });
@@ -36,6 +33,6 @@ class CreateResultsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results');
+        Schema::dropIfExists('score');
     }
 }

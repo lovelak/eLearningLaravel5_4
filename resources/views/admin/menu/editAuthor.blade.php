@@ -6,45 +6,47 @@
         <div class="container-fluid">
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{{ url('admin/menu') }}">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item active">ผู้จัดทำ</li>
+             
+                <li class="breadcrumb-item active">ประวัติผู้จัดทำ</li>
             </ol>
-            <!-- Example DataTables Card-->
-            <div class="card mb-12">
-                <div class="card-header">
-                    <i class="fa fa-plus"></i> <a href=""></a></div>
-                <div class="card-body">
-                    <form action = "{{ url('admin/menu/'.$menu->id) }}" method = "post" enctype ="multipart/form-data">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Name</label>
-                            <input type="text" class="form-control" name = "name" value="{{ $menu->name }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Slug</label>
-                            <input type="text" class="form-control" name = "slug" value="{{ $menu->slug }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Description</label>
-                            <textarea class="form-control my-editor" rows="10" name = "description" id = "description">{{ $menu->description }}</textarea>
-                        </div>
-
-
-                        <button type="submit" class="btn btn-danger">บันทึก</button>
-                    </form>
-                </div>
-                <div class="card-footer small text-muted"></div>
-            </div>
+            <div class="row">
+                    <div class="col-3">
+                            <div class="card mb-12">
+                                    <div class="card-body">
+                                           <ul>
+                                                @foreach($listMenu as $list)
+                                                 <li><a href = "{{ url('/admin/menu/editAuthor/'.$list->id.'/edit') }}">{{ $list->name }}</a></li>
+                                                @endforeach
+                                           </ul>
+                                    </div>
+                            </div>
+                    </div>
+                    <div class="col-9">
+                            <div class="card mb-12">
+                                    <div class="card-header">
+                                    <div class="card-body">
+                                        <form action = "{{ url('admin/menu/editSave/'.$menu->id.'/edit') }}" method = "post" enctype ="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            {{ method_field('PATCH') }}
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Name</label>
+                                                <input type="text" class="form-control" name = "name" value="{{ $menu->name }}">
+                                            </div>
+                                           
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Description</label>
+                                                <textarea class="form-control my-editor" rows="30" name = "description" id = "description">{{ $menu->description }}</textarea>
+                                            </div>
+                    
+                                            <button type="submit" class="btn btn-danger">บันทึก</button>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer small text-muted"></div>
+                            </div>
+                    </div>
+                  </div>
         </div>
-        <!-- /.container-fluid-->
-        <!-- /.content-wrapper-->
-
     </div>
-
-
 @endsection
 
 @section('js')

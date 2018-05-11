@@ -43,7 +43,7 @@
                                         @if($menu->slug != "author")
                                         <a href = "{{ url('/admin/menu/'.$menu->id.'/edit') }}">จัดการ</a>
                                         @else
-                                            <a href = "{{ url('/admin/menu/editAuthor/'.$menu->id.'/edit') }}">จัดการ</a>
+                                            <a href = "{{ url('/admin/menu/listAuthor/'.$menu->id) }}">จัดการ</a>
                                         @endif
                                     </td>
 

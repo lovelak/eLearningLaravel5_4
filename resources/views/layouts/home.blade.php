@@ -55,12 +55,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="amalia-navbar-collapse">
               <ul class="nav navbar-nav pull-right">
-                <li><a href="">หน้าหลัก <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ url('/') }}">หน้าหลัก <span class="sr-only">(current)</span></a></li>
                 <li><a href="">แนะนำบทเรียน</a></li>
                 <li><a href="">ความรู้เพิ่มเติม</a></li>
                   <li><a href="">ผู้จัดทำ</a></li>
                   <li><a href="">ดาวน์โหลดคู่มือ</a></li>
-                  <li><a href="">บรรณานุกรม</a></li>
+              <li><a href="{{ url('menu/reference/5') }}">บรรณานุกรม</a></li>
               </ul><!-- .navbar-nav -->
             </div><!-- .navbar-collapse -->
           </nav><!-- .navbar -->

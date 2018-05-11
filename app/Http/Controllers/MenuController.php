@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Menu;
+use App\Submenu;
 use Session;
 class MenuController extends Controller
 {
@@ -65,11 +66,56 @@ class MenuController extends Controller
         return view('admin.menu.edit',compact('menu'));
     }
 
+
+    //รายการประวัติผู้จัดทำ
+    public function listAuthor($id)
+    {
+        $submenu = Submenu::where('menu_id',$id)->get();
+        return view('admin.menu.listAuthor',compact('submenu','id'));
+    }
+
+    public function save(Request $request)
+    {
+       
+        Submenu::create($request->all());
+
+        Session::flash('success','บันทึกรายการเรียบร้อยแล้ว');
+        return redirect()->back();
+    }
+
+    public function del($id){
+        $submenu = Submenu::findOrFail($id);
+
+        $submenu->delete();
+
+        Session::flash('success','ลบรายการนี้เรียบร้อยแล้ว');
+
+        return redirect()->back();
+    }
+
     public function editAuthor($id)
     {
-        $menu = Menu::findOrFail($id);
-        return view('admin.menu.editAuthor',compact('menu'));
+
+        $listMenu = Submenu::all();
+        $menu = Submenu::findOrFail($id);
+        return view('admin.menu.editAuthor',compact('menu','listMenu','id'));
     }
+
+    public function editSave(Request $request, $id){
+       // dd($request->all());
+
+        $menu = Submenu::findOrFail($id);
+
+        $menu->name = $request->name ;
+        $menu->description = $request->description;
+
+        $menu->save();
+
+        Session::flash('success','แก้ไขรายการเรียบร้อยแล้ว');
+
+        return redirect()->back();
+    }
+
 
     /**
      * Update the specified resource in storage.

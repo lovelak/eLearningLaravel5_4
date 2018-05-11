@@ -28,7 +28,7 @@ body {
   font-family: 'ThaiSansNeueRegular', sans-serif;
   font-size: 18px;
   line-height: 24px;
-  color: #6b6e80;
+  color: #000000;
   background-color: #eef7fc;
 }
 ::-moz-selection {
@@ -413,10 +413,10 @@ blockquote small {
   line-height: 28px;
   font-weight: 300;
   border-bottom: 1px solid #e6e6e6;
-  color: #6b6e80;
+  color: #000000;
 }
 .bg-white {
-  color: #6b6e80;
+  color: #000000;
   background-color: #ffffff;
 }
 /* 
@@ -488,7 +488,7 @@ blockquote small {
   -o-border-radius: 0 20px 20px 0;
   border-radius: 0 20px 20px 0;
   border-color: #ebebeb;
-  color: #6b6e80;
+  color: #000000;
   background-color: #ebebeb;
 }
 /* 
@@ -512,7 +512,7 @@ blockquote small {
   line-height: 24px;
 }
 .breadcrumb > li a {
-  color: #6b6e80;
+  color: #000000;
 }
 .breadcrumb > li a:hover {
   color: #3498db;
@@ -1278,7 +1278,7 @@ blockquote small {
   text-align: center;
   font-size: 15px;
   line-height: 33px;
-  color: #6b6e80;
+  color: #000000;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -1553,7 +1553,7 @@ blockquote small {
   font-size: 18px;
   font-weight: 400;
   text-transform: capitalize;
-  color: #6b6e80;
+  color: #000000;
 }
 .widget ul li a {
   font-size: 18px;
@@ -1652,7 +1652,7 @@ blockquote small {
 }
 .widget_about .about-bio .social-icon > li > a {
   font-size: 16px;
-  color: #6b6e80;
+  color: #000000;
 }
 .widget_about .about-bio .social-icon > li > a:before {
   content: '';
@@ -1696,16 +1696,16 @@ blockquote small {
   outline: none;
 }
 .widget_search .search-form .search-field::-moz-placeholder {
-  color: #6b6e80;
+  color: #000000;
   opacity: 1;
   font-weight: 400;
 }
 .widget_search .search-form .search-field:-ms-input-placeholder {
-  color: #6b6e80;
+  color: #000000;
   font-weight: 400;
 }
 .widget_search .search-form .search-field::-webkit-input-placeholder {
-  color: #6b6e80;
+  color: #000000;
   font-weight: 400;
 }
 .widget_search .search-form .search-submit {
@@ -1850,7 +1850,7 @@ blockquote small {
   position: relative;
   font-size: 10px;
   line-height: 24px;
-  color: #6b6e80;
+  color: #000000;
 }
 .widget_popular_post ul li .post-entry .entry-date::before {
   content: '/';
@@ -1965,16 +1965,16 @@ blockquote small {
   outline: none;
 }
 .widget_newsletter .form-control::-moz-placeholder {
-  color: #6b6e80;
+  color: #000000;
   opacity: 1;
   font-weight: 400;
 }
 .widget_newsletter .form-control:-ms-input-placeholder {
-  color: #6b6e80;
+  color: #000000;
   font-weight: 400;
 }
 .widget_newsletter .form-control::-webkit-input-placeholder {
-  color: #6b6e80;
+  color: #000000;
   font-weight: 400;
 }
 .widget_project .project-container {
@@ -2128,7 +2128,7 @@ blockquote small {
   margin-left: -22px;
   width: 15px;
   height: 1px;
-  background-color: #6b6e80;
+  background-color: #000000;
 }
 /* 
 	=========================
@@ -2276,7 +2276,7 @@ blockquote small {
 }
 .team-info .social-icon > li > a {
   font-size: 16px;
-  color: #6b6e80;
+  color: #000000;
 }
 .team-info .social-icon > li > a:hover {
   color: #3498db;
@@ -3063,7 +3063,7 @@ blockquote small {
   font-weight: 600;
   border: none;
   background-color: transparent;
-  color: #6b6e80;
+  color: #000000;
 }
 .sign-container .nav-tabs > li > a:hover,
 .sign-container .nav-tabs > li > a:focus {
@@ -3168,7 +3168,7 @@ blockquote small {
 }
 .sign-container .sign-content .sign-form .form-group .form-control:focus + span,
 .sign-container .sign-content .sign-form .form-group .form-control:focus + i {
-  color: #6b6e80;
+  color: #000000;
 }
 .sign-container .sign-content .sign-form .checkbox input[type="checkbox"] {
   margin-top: 8px;
@@ -3464,7 +3464,7 @@ blockquote small {
 }
 .footer .widget_tag_cloud a {
   font-weight: 400;
-  color: #6b6e80;
+  color: #000000;
 }
 .footer .widget_tag_cloud a:hover {
   border-color: #d9d9d9;

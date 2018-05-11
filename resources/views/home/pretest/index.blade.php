@@ -21,19 +21,18 @@
                                 <td>คำถามข้อที่ {{ $i }} )&nbsp; </td>
                                 <td>
                                     <h4> {!! $pretest->question !!}
-
+                                        <input type ="hidden" name ="pretest_id[{{ $pretest->id }}]" value ="{{ $pretest->id }}"/> 
                                     </h4>
 
                                 </td>
                             </tr>
                         </table>
                         <ul>
-                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="1"> {!! $pretest->choice1 !!} </li>
-                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="2"> {!! $pretest->choice2 !!} </li>
-                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="3"> {!! $pretest->choice3 !!} </li>
-                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="4"> {!! $pretest->choice4 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="1"> {!! $pretest->choice1 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="2"> {!! $pretest->choice2 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="3"> {!! $pretest->choice3 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="4"> {!! $pretest->choice4 !!} </li>
                         </ul>
-
                     </div>
                     <?php $i++ ;?>
                 @endforeach
@@ -41,7 +40,7 @@
                     <button type="submit" name="ok" class="btn btn-success">
                         <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;ส่งคำตอบ
                     </button>
-                    <a href="test_frist.php">
+                    <a href="{{ url('pages/pretests') }}">
                         <button type="button" class="btn btn-danger"><i class="glyphicon glyphicon-refresh"></i>&nbsp;ล้างข้อมูล
                         </button>
                     </a>

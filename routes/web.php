@@ -14,7 +14,12 @@
 Route::get('/', function () {
     return view('home.index');
 });
-
+Route::group(['prefix'=>'menu'],function(){
+    Route::get('reference/{id}',function($id){
+            $menu = App\Menu::where('id',$id)->first();
+            return view('home.menu.show',compact('menu'));
+    });
+});
 Route::group(['prefix'=>'pages','middleware'=>'auth'],function() {
 
     //แบบทดสอบก่อนเรียน
@@ -44,7 +49,18 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
     //เมนู เว็บ
     Route::resource('menu','MenuController');
+    Route::get('menu/listAuthor/{id}','MenuController@listAuthor');
     Route::get('menu/editAuthor/{id}/edit','MenuController@editAuthor');
+    Route::post('menu/save/','MenuController@save');
+    Route::get('menu/del/{id}','MenuController@del');
+    
+    Route::patch('menu/editSave/{id}/edit','MenuController@editSave');
+    
+
+    
+
+
+    
 
 
     //Pretest

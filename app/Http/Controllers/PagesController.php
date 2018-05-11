@@ -8,6 +8,7 @@ use App\Pretest;
 use App\Posttest;
 use Auth;
 use App\Result;
+use App\Score;
 class PagesController extends Controller
 {
 
@@ -20,14 +21,47 @@ class PagesController extends Controller
 
     public function answerPretests(Request $request){
 
+            //loop บันทึกคำตอบที่เลือก
+            foreach($request->choice as $index => $value) {
+              //  echo "pretestid : ".$index."Value : ".$value."<br/>";
+              //  echo "Choice : ".$index." Value :".$value."<br/>";
+                $result = new Result;
+                $result->choice = $value;
+                $result->pretest_id =$index; 
+                $result->user_id = Auth::id();
+                $result->save();
+            
+            }
 
-        // $total = Pretest::all();
+            $pretests = Pretest::get();
+            $sum = 0 ;  
+            foreach($pretests as $pretest){
 
-        // for($i = 1 ;$i <= count($total) ; $i++){
+                $results = Result::where('user_id',Auth::id())->where('pretest_id',$pretest->id)->get();
+                $i = 0;   
+                 //loop ตรวจคำตอบ
+                foreach($results as $result){
+        
+                            if($pretest->answer == $result->choice){
+                                     $sum = $sum + 1 ;
+                            }else{
+                                    $sum = $sum +0;
+                            }       
+                } 
 
-        //     echo "choice".$i.": ".$request->choice[$i];
+            }
 
-        // }
+            //บันทึกคะแนน
+            $score = new Score;
+            $score->total = $sum ; 
+            $score->question_name = "pretests";
+            $score->user_id = Auth::id();
+            $score->save();
+           
+
+            return "OK";
+           
+
     }
 
     //แบบทดสอบหลังเรียน
