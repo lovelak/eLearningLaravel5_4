@@ -20,7 +20,7 @@ class PagesController extends Controller
     }
 
     public function answerPretests(Request $request){
-
+        
             //loop บันทึกคำตอบที่เลือก
             foreach($request->choice as $index => $value) {
               //  echo "pretestid : ".$index."Value : ".$value."<br/>";
