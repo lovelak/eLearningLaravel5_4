@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Pretest;
 use App\Posttest;
 use Auth;
-
+use App\Result;
 class PagesController extends Controller
 {
 
@@ -21,13 +21,13 @@ class PagesController extends Controller
     public function answerPretests(Request $request){
 
 
-        $total = Pretest::all();
+        // $total = Pretest::all();
 
-        for($i = 1 ;$i <= count($total) ; $i++){
+        // for($i = 1 ;$i <= count($total) ; $i++){
 
-            echo "choice".$i.": ".$request->choice[$i];
+        //     echo "choice".$i.": ".$request->choice[$i];
 
-        }
+        // }
     }
 
     //แบบทดสอบหลังเรียน
