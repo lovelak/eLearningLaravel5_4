@@ -13,15 +13,17 @@ class CreateSubmenuTable extends Migration
      */
     public function up()
     {
-        Schema::create('submenu', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
+        // Schema::create('submenu', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('name')->nullable();
+        //     $table->text('description')->nullable();
 
-            $table->integer('menu_id')->unsigned()->nullable();
-            $table->foreign('menu_id')->references('id')->on('menu');
-            $table->timestamps();
-        });
+        //     $table->string('filename')->nullable();
+
+        //     $table->integer('menu_id')->unsigned();
+        //     $table->foreign('menu_id')->references('id')->on('menu');
+        //     $table->timestamps();
+        // });
     }
 
     /**

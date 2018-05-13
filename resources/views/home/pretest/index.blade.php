@@ -18,21 +18,22 @@
                     <div class ="thumbnail">
                         <table>
                             <tr>
-                                <td>คำถามข้อที่ {{ $i }} )&nbsp; </td>
+                                <td>ข้อที่ {{ $i }} )&nbsp; </td>
                                 <td>
                                     <h4> {!! $pretest->question !!}
-                                        <input type ="hidden" name ="pretest_id[{{ $pretest->id }}]" value ="{{ $pretest->id }}"/> 
+                                            
                                     </h4>
 
                                 </td>
                             </tr>
                         </table>
                         <ul>
-                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="1"> {!! $pretest->choice1 !!} </li>
-                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="2"> {!! $pretest->choice2 !!} </li>
-                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="3"> {!! $pretest->choice3 !!} </li>
-                            <li style="list-style: none;"><input name="choice[{{ $pretest->id }}]" type="radio" value="4"> {!! $pretest->choice4 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="1"> {!! $pretest->choice1 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="2"> {!! $pretest->choice2 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="3"> {!! $pretest->choice3 !!} </li>
+                            <li style="list-style: none;"><input name="choice[{{ $i }}]" type="radio" value="4"> {!! $pretest->choice4 !!} </li>
                         </ul>
+
                     </div>
                     <?php $i++ ;?>
                 @endforeach

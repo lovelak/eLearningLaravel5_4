@@ -37,7 +37,25 @@ class LearningsController extends Controller
     public function store(Request $request)
     {
 
-        Learning::create($request->all());
+
+        $learning = new Learning;
+        if($request->hasFile('vdo_youtube')){
+            $filename = $request->vdo_youtube;
+            $extensionpdf = $filename->getClientOriginalExtension();
+            $renamepdf = "vdo_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
+            $filename_new_name = time(). $filename->getClientOriginalName();
+            $filename->move('uploads/vdo/',$renamepdf);
+            $learning->vdo_youtube = $renamepdf;
+        }
+
+        $learning->name = $request->name;
+        $learning->slug = $request->slug;
+        $learning->description = $request->description;
+        $learning->unit_id = $request->unit_id;
+        $learning->save();
+
+
+       // Learning::create($request->all());
 
 
         Session::flash('success','เพิ่มหัวข้อย่อยเรียบร้อยแล้ว');
@@ -84,7 +102,26 @@ class LearningsController extends Controller
     {
 
         $learning = Learning::findOrFail($id);
-        $learning->update($request->all());
+
+        if($request->hasFile('vdo_youtube')){
+            if($learning->vdo_youtube != NULL){
+                unlink('uploads/vdo/'.$learning->vdo_youtube);
+            }
+           
+
+            $filename = $request->vdo_youtube;
+            $extensionpdf = $filename->getClientOriginalExtension();
+            $renamepdf = "vdo_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
+            $filename_new_name = time(). $filename->getClientOriginalName();
+            $filename->move('uploads/vdo',$renamepdf);
+            $learning->vdo_youtube = $renamepdf;
+        }
+
+        $learning->name = $request->name;
+        $learning->slug = $request->slug;
+        $learning->description = $request->description;
+        $learning->unit_id = $request->unit_id;
+        $learning->update();
 
         Session::flash('success','แก้ไขรายการเรียบร้อยแล้ว');
         return redirect()->route('units.index');
@@ -98,6 +135,14 @@ class LearningsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Learning = Learning::findOrFail($id);
+        if($Learning->vdo_youtube != NULL) {
+            unlink('uploads/vdo/' . $Learning->vdo_youtube);
+          
+        }
+
+        $Learning->delete();
+        Session::flash('success','ลบรายการเรียบร้อยแล้ว');
+        return redirect()->route('units.index');
     }
 }

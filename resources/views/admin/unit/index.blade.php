@@ -42,9 +42,12 @@
                                             <?php $Ls = DB::table('learnings')->where('unit_id', $unit->id)->orderBy('id')->get(); ?>
                                             @foreach($Ls as $l )
                                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                    {{ $l->name }}
+                                                    {{ $l->name }} 
+                                                    @if($l->vdo_youtube != NULL)
+                                                    <i class="fa fa-camera"></i>
+                                                    @endif  
 
-                                                    <span class="badge badge-pill"><a href = "{{ url('admin/learnings/'.$l->id.'/edit') }}">แก้ไข</a> | <a href = "">ลบ</a></span>
+                                                <span class="badge badge-pill"><a href = "{{ url('admin/learnings/'.$l->id.'/edit') }}">แก้ไข</a> | <a href = "{{ url('admin/learnings/destroy/'.$l->id) }}" onclick="return confirm('คุณต้องการลบรายการนี้ใช่หรือไม่ ?');">ลบ</a></span>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -52,9 +55,9 @@
                                     </td>
 
                                     <td>
-                                         <a href="{{ url('admin/tests/show/'.$unit->id) }}"><i class="fa fa-plus"></i> ข้อสอบประจำหน่วย</a> |
-                                        <a href="{{ url('admin/units/'.$unit->id.'/edit') }}"><i class="fa fa-edit"></i> แก้ไข</a> |
-                                        <a href="{{ url('admin/units/'.$unit->id.'/destroy') }}"><i class="fa fa-trash"></i> ลบ</a>
+                                         <a href="{{ url('admin/tests/show/'.$unit->id) }}"><i class="fa fa-plus"></i> ข้อสอบประจำหน่วย</a> 
+                                        {{-- <a href="{{ url('admin/units/'.$unit->id.'/edit') }}"><i class="fa fa-edit"></i> แก้ไข</a> |
+                                        <a href="{{ url('admin/units/'.$unit->id.'/destroy') }}"><i class="fa fa-trash"></i> ลบ</a> --}}
 
 
                                     </td>

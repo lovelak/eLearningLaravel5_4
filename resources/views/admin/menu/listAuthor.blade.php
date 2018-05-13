@@ -53,8 +53,8 @@
                 
                                                     <td>
                                                      
-                                                            <a href = "{{ url('/admin/menu/editAuthor/'.$menu->id.'/edit') }}">แก้ไข</a>
-                                                            <a href = "{{ url('/admin/menu/del/'.$menu->id) }}">ลบ</a>
+                                                            <a href = "{{ url('/admin/menu/editAuthor/'.$menu->id.'/'.$id.'/edit') }}">แก้ไข</a>
+                                                            <a href = "{{ url('/admin/menu/del/'.$menu->id) }}" onclick="return confirm('คุณต้องการลบรายการนี้ใช่หรือไม่ ?');">ลบ</a>
                                                     </td>
                 
                                                 </tr>

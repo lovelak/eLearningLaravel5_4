@@ -25,17 +25,20 @@
                             <label for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name = "name" value="{{ $learning->name }}" >
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleInputEmail1">Slug</label>
                             <input type="text" class="form-control" name = "slug" value="{{ $learning->slug }}" >
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="exampleInputPassword1">Detail</label>
                             <textarea class="form-control my-editor" rows="5" name = "description" id = "description">{{ $learning->description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Vdo</label>
-                            <input type="text" class="form-control" name = "vdo_youtube" value="{{ $learning->vdo_youtube }}" >
+                            @if($learning->vdo_youtube != NULL)
+                             ไฟล์เดิม : {{ $learning->vdo_youtube}}
+                            @endif
+                            <input type="file" class="form-control" name = "vdo_youtube" value="{{ $learning->vdo_youtube }}" >
                         </div>
 
 

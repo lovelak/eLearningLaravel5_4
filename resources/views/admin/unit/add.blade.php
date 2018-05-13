@@ -24,17 +24,17 @@
                             <label for="exampleInputEmail1">Name</label>
                             <input type="text" class="form-control" name = "name" value="" >
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleInputEmail1">Slug</label>
                             <input type="text" class="form-control" name = "slug" value="" >
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="exampleInputPassword1">Detail</label>
                             <textarea class="form-control my-editor" rows="5" name = "description" id = "description"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Vdo</label>
-                            <input type="text" class="form-control" name = "vdo_youtube" value="" >
+                            <input type="file" class="form-control" name = "vdo_youtube"  >
                         </div>
 
 

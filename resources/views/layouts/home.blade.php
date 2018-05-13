@@ -58,9 +58,18 @@
                 <li><a href="{{ url('/') }}">หน้าหลัก <span class="sr-only">(current)</span></a></li>
                 <li><a href="">แนะนำบทเรียน</a></li>
                 <li><a href="">ความรู้เพิ่มเติม</a></li>
-                  <li><a href="">ผู้จัดทำ</a></li>
-                  <li><a href="">ดาวน์โหลดคู่มือ</a></li>
-              <li><a href="{{ url('menu/reference/5') }}">บรรณานุกรม</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ผู้จัดทำ <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+
+                    @foreach($submenu as $sub)
+                  <li><a href="{{ url('menu/author/'.$sub->id) }}">{{ $sub->name }}</a></li>
+                    @endforeach
+
+                  </ul>
+                </li>
+              <li><a href="{{ url('menu/download') }}">ดาวน์โหลดคู่มือ</a></li>
+              <li><a href="{{ url('menu/reference') }}">บรรณานุกรม</a></li>
               </ul><!-- .navbar-nav -->
             </div><!-- .navbar-collapse -->
           </nav><!-- .navbar -->
@@ -100,7 +109,7 @@
                       @foreach($learnings as $learning)
                         <li><a href="">{{ $learning->name }}</a></li>
                       @endforeach
-                        <li><a href="{{ $unit->id }}">แบบทดสอบท้ายบทเรียน</a></li>
+                        <li><a href="{{ url('pages/tests/'.$unit->id) }}">แบบทดสอบท้ายบทเรียน</a></li>
                     </ul>
 
                 @endforeach
@@ -153,6 +162,19 @@
     <script src="{{ asset('boxed/js/jquery.justifiedGallery.min.js') }}"></script>
     <script src="{{ asset('boxed/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('boxed/js/script.min.js') }}"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+      @if(Session::has('success'))
+        swal({
+              title: "แจ้งเตือนการทำรายการ",
+              text: "{{ Session::get('success') }}",
+              icon: "success",
+              button: "ปิดหน้านี้",
+        });
+        @endif
+    </script>
 
   </body>
 </html>

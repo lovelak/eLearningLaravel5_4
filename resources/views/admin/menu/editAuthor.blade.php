@@ -15,7 +15,7 @@
                                     <div class="card-body">
                                            <ul>
                                                 @foreach($listMenu as $list)
-                                                 <li><a href = "{{ url('/admin/menu/editAuthor/'.$list->id.'/edit') }}">{{ $list->name }}</a></li>
+                                                 <li><a href = "{{ url('/admin/menu/editAuthor/'.$list->id.'/'.$list->menu_id.'/edit') }}">{{ $list->name }}</a></li>
                                                 @endforeach
                                            </ul>
                                     </div>

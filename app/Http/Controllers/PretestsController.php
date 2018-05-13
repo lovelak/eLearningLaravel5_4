@@ -16,7 +16,9 @@ class PretestsController extends Controller
      */
     public function index()
     {
-        $pretests = Pretest::orderByRaw("RAND()")->get();
+
+      //  $pretests = Pretest::orderByRaw("RAND()")->get();
+        $pretests = Pretest::all();
         return view('admin.pretest.index',compact('pretests'));
     }
 
@@ -91,6 +93,11 @@ class PretestsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Pretest= Pretest::findOrFail($id);
+
+        $Pretest->delete();
+
+        Session::flash('success','ลบรายการนี้เรียบร้อยแล้ว');
+        return redirect()->back();
     }
 }

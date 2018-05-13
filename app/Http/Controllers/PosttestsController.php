@@ -89,6 +89,11 @@ class PosttestsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Posttest= Posttest::findOrFail($id);
+
+        $Posttest->delete();
+
+        Session::flash('success','ลบรายการนี้เรียบร้อยแล้ว');
+        return redirect()->back();
     }
 }

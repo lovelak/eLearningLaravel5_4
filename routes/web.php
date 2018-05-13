@@ -15,10 +15,22 @@ Route::get('/', function () {
     return view('home.index');
 });
 Route::group(['prefix'=>'menu'],function(){
-    Route::get('reference/{id}',function($id){
-            $menu = App\Menu::where('id',$id)->first();
+    Route::get('reference',function(){
+            $menu = App\Menu::where('id',5)->first();
             return view('home.menu.show',compact('menu'));
     });
+
+    Route::get('download',function(){
+        $menu = App\Submenu::where('menu_id',4)->orderBy('id')->get();
+        return view('home.menu.download',compact('menu'));
+});
+
+    Route::get('author/{id}',function($id){
+        $menu = App\Submenu::where('id',$id)->first();
+        return view('home.menu.author',compact('menu'));
+});
+
+
 });
 Route::group(['prefix'=>'pages','middleware'=>'auth'],function() {
 
@@ -29,6 +41,13 @@ Route::group(['prefix'=>'pages','middleware'=>'auth'],function() {
 
     //แบบทดสอบหลังเรียน
     Route::get('posttests','PagesController@posttests');
+    //ตรวจคำตอบ
+    Route::post('/answerPosttests','PagesController@answerPosttests');
+
+    //แบบทดสอบท้ายบทเรียน
+    Route::get('tests/{id}','PagesController@tests');
+     //ตรวจคำตอบ
+    Route::post('/answerTests','PagesController@answerTests');
 
 });
 
@@ -50,14 +69,15 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     //เมนู เว็บ
     Route::resource('menu','MenuController');
     Route::get('menu/listAuthor/{id}','MenuController@listAuthor');
-    Route::get('menu/editAuthor/{id}/edit','MenuController@editAuthor');
+    Route::get('menu/editAuthor/{id}/{menu_id}/edit','MenuController@editAuthor');
     Route::post('menu/save/','MenuController@save');
     Route::get('menu/del/{id}','MenuController@del');
-    
     Route::patch('menu/editSave/{id}/edit','MenuController@editSave');
     
+    //download
+    Route::get('menu/listDownload/{id}','MenuController@listDownload');
+    Route::get('menu/editDownload/{id}/{menu_id}/edit','MenuController@editDownload');
 
-    
 
 
     
@@ -65,9 +85,11 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
     //Pretest
     Route::resource('pretests','PretestsController');
+    Route::get('pretests/destroy/{id}','PretestsController@destroy');
 
     //Posttest
     Route::resource('posttests','PosttestsController');
+    Route::get('posttests/destroy/{id}','PosttestsController@destroy');
 
     //Unit
     Route::resource('units','UnitsController');
@@ -75,7 +97,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
     //Learning
     Route::resource('learnings','LearningsController');
-
+    Route::get('learnings/destroy/{id}','LearningsController@destroy');
 
     //Tests
     Route::resource('tests','TestsController');

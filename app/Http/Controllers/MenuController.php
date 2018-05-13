@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Menu;
 use App\Submenu;
 use Session;
+use File;
 class MenuController extends Controller
 {
     /**
@@ -93,10 +94,10 @@ class MenuController extends Controller
         return redirect()->back();
     }
 
-    public function editAuthor($id)
+    public function editAuthor($id,$menu_id)
     {
 
-        $listMenu = Submenu::all();
+        $listMenu = Submenu::where('menu_id',$menu_id)->get();
         $menu = Submenu::findOrFail($id);
         return view('admin.menu.editAuthor',compact('menu','listMenu','id'));
     }
@@ -105,6 +106,21 @@ class MenuController extends Controller
        // dd($request->all());
 
         $menu = Submenu::findOrFail($id);
+
+        if($request->hasFile('filename')){
+            if($menu->filename != NULL){
+                unlink('uploads/file/'.$menu->filename);
+            }
+           
+
+            $filename = $request->filename;
+            $extensionpdf = $filename->getClientOriginalExtension();
+            $renamepdf = "PDF_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
+            $filename_new_name = time(). $filename->getClientOriginalName();
+            $filename->move('uploads/file',$renamepdf);
+            $menu->filename = $renamepdf;
+        }
+
 
         $menu->name = $request->name ;
         $menu->description = $request->description;
@@ -116,6 +132,42 @@ class MenuController extends Controller
         return redirect()->back();
     }
 
+
+     //download
+     public function listDownload($id)
+     {
+         $submenu = Submenu::where('menu_id',$id)->get();
+         return view('admin.menu.listDownload',compact('submenu','id'));
+     }
+
+    public function editDownload($id,$menu_id)
+    {
+
+        $listMenu = Submenu::where('menu_id',$menu_id)->get();
+        $menu = Submenu::findOrFail($id);
+        return view('admin.menu.editDownload',compact('menu','listMenu','id'));
+    }
+
+    public function saveDownload(Request $request){
+
+        $menu = new Submenu;
+
+
+
+        if($request->hasFile('filename')){
+            $filename = $request->filename;
+            $extensionpdf = $filename->getClientOriginalExtension();
+            $renamepdf = "PDF_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
+            $filename_new_name = time(). $filename->getClientOriginalName();
+            $filename->move('uploads/file',$renamepdf);
+            $sliders->filename = $renamepdf;
+        }
+
+
+
+        Session::flash('success','บันทึกรายการเรียบร้อยแล้ว !!!');
+        return redirect()->route('sliders');
+    }
 
     /**
      * Update the specified resource in storage.

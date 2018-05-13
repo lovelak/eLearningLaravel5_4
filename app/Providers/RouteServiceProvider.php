@@ -8,6 +8,7 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Schema;
 use View;
 use App\Unit;
+use App\Submenu;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -27,11 +28,16 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+       
 
         parent::boot();
         Schema::defaultStringLength(191);
+        
+        //list of unit show admin and user
         View::share('units', Unit::orderBy('id')->get()); //Unit
+
+        //list top menu show all page content
+        view::share('submenu',Submenu::where('menu_id',3)->orderBy('id')->get());
 
 
 

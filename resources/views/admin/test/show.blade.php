@@ -22,8 +22,6 @@
                             <tr>
                                 <th>ข้อที่</th>
                                 <th>รายการ</th>
-
-                                <th>วันที่สร้าง</th>
                                 <th>จัดการ</th>
 
 
@@ -38,9 +36,9 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{!! $t->question !!} </td>
-                                            <td>{{ $t->created_at }}</td>
+                                     
                                             <td><a href = "{{ url('admin/tests/'.$t->id.'/edit') }}"><span class="fa fa-edit"></span> แก้ไข</a> |
-                                                <a href = "{{ url('admin/tests/destroy/'.$t->id) }}"><span class="fa fa-trash"></span> ลบ</a>
+                                                <a href = "{{ url('admin/tests/destroy/'.$t->id) }}" onclick="return confirm('คุณต้องการลบรายการนี้ใช่หรือไม่ ?');"><span class="fa fa-trash"></span> ลบ</a>
                                             </td>
                                         </tr>
                                     @endforeach
