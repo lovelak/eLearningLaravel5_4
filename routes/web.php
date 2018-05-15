@@ -112,7 +112,10 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::get('tests/add/{id}','TestsController@add');
     Route::get('tests/destroy/{id}','TestsController@destroy');
 
+    //จัดการผู้สอบ
 
+    Route::resource('users','UsersController');
+    Route::get('users/destroy/{id}','UsersController@destroy');
 
 });
 

@@ -58,7 +58,7 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ url('admin/users') }}">
                     <i class="fa fa-fw fa-user"></i>
                     <span class="nav-link-text">จัดการผู้สอบ</span>
                 </a>
