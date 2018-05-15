@@ -23,6 +23,7 @@
       <script src="{{ asset('boxed/js/html5shiv.min.js') }}"></script>
       <script src="{{ asset('boxed/js/respond.min.js') }}"></script>
     <![endif]-->
+    @yield('css')
   </head>
   <body>
 
@@ -56,12 +57,11 @@
             <div class="collapse navbar-collapse" id="amalia-navbar-collapse">
               <ul class="nav navbar-nav pull-right">
                 <li><a href="{{ url('/') }}">หน้าหลัก <span class="sr-only">(current)</span></a></li>
-                <li><a href="">แนะนำบทเรียน</a></li>
+                {{-- <li><a href="">แนะนำบทเรียน</a></li> --}}
                 <li><a href="">ความรู้เพิ่มเติม</a></li>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ผู้จัดทำ <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-
                     @foreach($submenu as $sub)
                   <li><a href="{{ url('menu/author/'.$sub->id) }}">{{ $sub->name }}</a></li>
                     @endforeach
@@ -70,6 +70,32 @@
                 </li>
               <li><a href="{{ url('menu/download') }}">ดาวน์โหลดคู่มือ</a></li>
               <li><a href="{{ url('menu/reference') }}">บรรณานุกรม</a></li>
+              @if (Auth::guest())
+              <li><a href="{{ url('login') }}">เข้าระบบ</a></li>
+
+              @else
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{ Auth::user()->name }} <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                   
+                  <li><a href="{{ url('/home') }}">Backoffice</a></li>
+                  <li>
+                      <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                          ออกจากระบบ
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                  </li>
+                  
+
+                  </ul>
+                </li>
+    
+              @endif
               </ul><!-- .navbar-nav -->
             </div><!-- .navbar-collapse -->
           </nav><!-- .navbar -->
@@ -91,15 +117,14 @@
 
              @yield('content')
 
-
             </div><!-- .col-md-8 -->
 
             <!-- sidebar -->
             <div class="col-md-4 col-md-pull-8">
-
+            @if (Auth::guest())
               <section class="widget widget_archive">
-                <h2 class="widget-title"><a href = "{{ url('pages/pretests') }}" class="btn btn-success btn-lg btn-block">แบบทดสอบก่อนเรียน</a></h2>
-
+                 
+    
                 @foreach($units as $unit)
                     <h2 class="widget-title">{{ $unit->name .' '.$unit->title }}</h2>
 
@@ -107,17 +132,45 @@
                       <?php $learnings = DB::table('learnings')->whereRaw('unit_id = ?',[$unit->id])->orderBy('id')->get(); ?>
 
                       @foreach($learnings as $learning)
-                        <li><a href="">{{ $learning->name }}</a></li>
+                        <li><a href="{{ url('pageDetail/'.$learning->id) }}">{{ $learning->name }}</a></li>
                       @endforeach
-                        <li><a href="{{ url('pages/tests/'.$unit->id) }}">แบบทดสอบท้ายบทเรียน</a></li>
+                        
                     </ul>
 
                 @endforeach
 
-                <h2 class="widget-title"><a href = "{{ url('pages/posttests') }}" class="btn btn-success btn-lg btn-block">แบบทดสอบหลังเรียน</a></h2>
+               
                 <h2 class="widget-title"></h2>
 
               </section><!-- .widget_archive -->
+
+            @else 
+
+              <section class="widget widget_archive">
+                 
+                  <h2 class="widget-title"><a href = "{{ url('pages/pretests') }}" class="btn btn-success btn-lg btn-block">แบบทดสอบก่อนเรียน</a></h2>
+    
+                  
+                  @foreach($units as $unit)
+                      <h2 class="widget-title">{{ $unit->name .' '.$unit->title }}</h2>
+  
+                      <ul>
+                        <?php $learnings = DB::table('learnings')->whereRaw('unit_id = ?',[$unit->id])->orderBy('id')->get(); ?>
+  
+                        @foreach($learnings as $learning)
+                        <li><a href="{{ url('pageDetail/'.$learning->id) }}">{{ $learning->name }}</a></li>
+                        @endforeach
+                          <li><a href="{{ url('pages/tests/'.$unit->id) }}">แบบทดสอบท้ายบทเรียน</a></li>
+                      </ul>
+  
+                  @endforeach
+  
+                  <h2 class="widget-title"><a href = "{{ url('pages/posttests') }}" class="btn btn-success btn-lg btn-block">แบบทดสอบหลังเรียน</a></h2>
+                  <h2 class="widget-title"></h2>
+  
+                </section><!-- .widget_archive -->
+
+              @endif
 
 
             </div><!-- .col-md-4 -->
@@ -164,7 +217,7 @@
     <script src="{{ asset('boxed/js/script.min.js') }}"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    @yield('js')
     <script>
       @if(Session::has('success'))
         swal({

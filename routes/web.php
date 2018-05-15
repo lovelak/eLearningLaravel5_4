@@ -14,6 +14,13 @@
 Route::get('/', function () {
     return view('home.index');
 });
+Route::get('/pageDetail/{id}',function($id){
+
+    $learning = App\Learning::where('id',$id)->first();
+
+    return view('home.listDetail',compact('id','learning'));
+});
+
 Route::group(['prefix'=>'menu'],function(){
     Route::get('reference',function(){
             $menu = App\Menu::where('id',5)->first();
