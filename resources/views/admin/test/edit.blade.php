@@ -20,6 +20,7 @@
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                         <input type="hidden" class="form-control" name = "unit_id" value="{{ $test->unit_id }}">
+                        <input type="hidden" class="form-control" name = "unitid" value="{{ $unit_id }}">
                         <div class="form-group">
                             <label for="exampleInputPassword1">คำถาม</label>
                             <textarea class="form-control my-editor" rows="5" name = "question" id = "question">{{ $test->question }}</textarea>

@@ -33,8 +33,8 @@
                             <textarea class="form-control my-editor" rows="5" name = "description" id = "description"></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Vdo</label>
-                            <input type="file" class="form-control" name = "vdo_youtube"  >
+                            <label for="exampleInputEmail1">Vdo Youtube</label>
+                            <input type="text" class="form-control" name = "vdo_youtube"  >
                         </div>
 
 

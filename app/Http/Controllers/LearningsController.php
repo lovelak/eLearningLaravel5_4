@@ -39,19 +39,20 @@ class LearningsController extends Controller
 
 
         $learning = new Learning;
-        if($request->hasFile('vdo_youtube')){
-            $filename = $request->vdo_youtube;
-            $extensionpdf = $filename->getClientOriginalExtension();
-            $renamepdf = "vdo_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
-            $filename_new_name = time(). $filename->getClientOriginalName();
-            $filename->move('uploads/vdo/',$renamepdf);
-            $learning->vdo_youtube = $renamepdf;
-        }
+        // if($request->hasFile('vdo_youtube')){
+        //     $filename = $request->vdo_youtube;
+        //     $extensionpdf = $filename->getClientOriginalExtension();
+        //     $renamepdf = "vdo_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
+        //     $filename_new_name = time(). $filename->getClientOriginalName();
+        //     $filename->move('uploads/vdo/',$renamepdf);
+        //     $learning->vdo_youtube = $renamepdf;
+        // }
 
         $learning->name = $request->name;
         $learning->slug = $request->slug;
         $learning->description = $request->description;
         $learning->unit_id = $request->unit_id;
+        $learning->vdo_youtube = $request->vdo_youtube;
         $learning->save();
 
 
@@ -103,24 +104,25 @@ class LearningsController extends Controller
 
         $learning = Learning::findOrFail($id);
 
-        if($request->hasFile('vdo_youtube')){
-            if($learning->vdo_youtube != NULL){
-                unlink('uploads/vdo/'.$learning->vdo_youtube);
-            }
+        // if($request->hasFile('vdo_youtube')){
+        //     if($learning->vdo_youtube != NULL){
+        //         unlink('uploads/vdo/'.$learning->vdo_youtube);
+        //     }
            
 
-            $filename = $request->vdo_youtube;
-            $extensionpdf = $filename->getClientOriginalExtension();
-            $renamepdf = "vdo_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
-            $filename_new_name = time(). $filename->getClientOriginalName();
-            $filename->move('uploads/vdo',$renamepdf);
-            $learning->vdo_youtube = $renamepdf;
-        }
+        //     $filename = $request->vdo_youtube;
+        //     $extensionpdf = $filename->getClientOriginalExtension();
+        //     $renamepdf = "vdo_".date('Y-m-d').time().rand(11111, 99999) . '.' . $extensionpdf;
+        //     $filename_new_name = time(). $filename->getClientOriginalName();
+        //     $filename->move('uploads/vdo',$renamepdf);
+        //     $learning->vdo_youtube = $renamepdf;
+        // }
 
         $learning->name = $request->name;
         $learning->slug = $request->slug;
         $learning->description = $request->description;
         $learning->unit_id = $request->unit_id;
+        $learning->vdo_youtube = $request->vdo_youtube;
         $learning->update();
 
         Session::flash('success','แก้ไขรายการเรียบร้อยแล้ว');
@@ -136,10 +138,10 @@ class LearningsController extends Controller
     public function destroy($id)
     {
         $Learning = Learning::findOrFail($id);
-        if($Learning->vdo_youtube != NULL) {
-            unlink('uploads/vdo/' . $Learning->vdo_youtube);
+        // if($Learning->vdo_youtube != NULL) {
+        //     unlink('uploads/vdo/' . $Learning->vdo_youtube);
           
-        }
+        // }
 
         $Learning->delete();
         Session::flash('success','ลบรายการเรียบร้อยแล้ว');

@@ -37,7 +37,7 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{!! $t->question !!} </td>
                                      
-                                            <td><a href = "{{ url('admin/tests/'.$t->id.'/edit') }}"><span class="fa fa-edit"></span> แก้ไข</a> |
+                                            <td><a href = "{{ url('admin/tests/'.$t->id.'/'.$unit_id.'/edit') }}"><span class="fa fa-edit"></span> แก้ไข</a> |
                                                 <a href = "{{ url('admin/tests/destroy/'.$t->id) }}" onclick="return confirm('คุณต้องการลบรายการนี้ใช่หรือไม่ ?');"><span class="fa fa-trash"></span> ลบ</a>
                                             </td>
                                         </tr>

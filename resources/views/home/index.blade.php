@@ -7,12 +7,9 @@
     <div class="col-md-12">
         <h2 style="border-bottom: solid 4px;color: #0b2e13;">ประกาศ...</h2>
 
-        <img src = "{{ asset('boxed/img/b.jpg') }}">
-
-
+        <img src = "{{ asset('boxed/img/bg1.png') }}"><br/>
         <hr/>
-        <h2>รายชื่อนักเรียนที่สอบล่าสุด</h2>
-
+  
     </div>
 </div>
 @endsection

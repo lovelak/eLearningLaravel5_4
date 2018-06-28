@@ -38,7 +38,7 @@
                             @if($learning->vdo_youtube != NULL)
                              ไฟล์เดิม : {{ $learning->vdo_youtube}}
                             @endif
-                            <input type="file" class="form-control" name = "vdo_youtube" value="{{ $learning->vdo_youtube }}" >
+                            <input type="text" class="form-control" name = "vdo_youtube" value="{{ $learning->vdo_youtube }}" >
                         </div>
 
 

@@ -83,7 +83,7 @@ class UnitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
     }
 
     /**
@@ -94,6 +94,14 @@ class UnitsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Unit = Unit::findOrFail($id);
+        // if($Learning->vdo_youtube != NULL) {
+        //     unlink('uploads/vdo/' . $Learning->vdo_youtube);
+          
+        // }
+
+        $Unit->delete();
+        Session::flash('success','ลบรายการเรียบร้อยแล้ว');
+        return redirect()->route('units.index');
     }
 }

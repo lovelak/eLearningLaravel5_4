@@ -108,6 +108,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
     //Tests
     Route::resource('tests','TestsController');
+    Route::get('tests/{id}/{unit_id}/edit','TestsController@edit');
     Route::get('tests/show/{id}','TestsController@show');
     Route::get('tests/add/{id}','TestsController@add');
     Route::get('tests/destroy/{id}','TestsController@destroy');
