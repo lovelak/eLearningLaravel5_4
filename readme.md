@@ -34,3 +34,6 @@ https://www.facebook.com/m.nakharin
 
 #ผิดพลาดประการใด ก็แนะนำ ได้นะครับ
 
+#ระบบพัฒนาด้วย PHP Laravel Framework 5.4.36
+#รองรับ PHP >= 5.6.4
+
